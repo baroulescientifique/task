@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  rabbitmq:
+    # Rabbit Image
+    image: 'rabbitmq:3.6-management-alpine'
+
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    # Run this container on a private network for this application.
+
+
+  server:
+    # If needed, Docker Compose will automatically run server/Dockerfile.
+    build: ./server
+    links:
+      - rabbitmq
+
+  client:
+    # Identical to the consumer.
+    build: ./client
+
+    links:
+      - rabbitmq
