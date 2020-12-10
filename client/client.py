@@ -1,3 +1,4 @@
+
 import pika
 import uuid
 
@@ -49,6 +50,13 @@ class FibonacciRpcClient(object):
 
 
 fibonacci_rpc = FibonacciRpcClient()
+
+
+
+
+
+print('hello ')
+#
 
 print(" [x] Launching a RPC call  fib(60)")
 response = fibonacci_rpc.call(60)
